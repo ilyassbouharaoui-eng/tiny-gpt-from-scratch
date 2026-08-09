@@ -27,8 +27,10 @@ def build_itos(vocab):
         dic[i] = e
     return dic
 
-# Step 4 - encode_char (not yet solved)
-# TODO: implement
+# Step 4 - encode_char
+def encode_char(ch, stoi):
+    """Return the integer token id for a single character ch using stoi."""
+    return stoi[ch]
 
 # Step 5 - encode_string (not yet solved)
 # TODO: implement
