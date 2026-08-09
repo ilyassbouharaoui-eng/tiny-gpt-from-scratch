@@ -40,8 +40,10 @@ def encode_string(text, stoi):
         res.append(encode_char(s,stoi))
     return res
 
-# Step 6 - decode_int (not yet solved)
-# TODO: implement
+# Step 6 - decode_int
+def decode_int(token_id, itos):
+    """Return the single character mapped to token_id by itos."""
+    return itos[token_id]
 
 # Step 7 - decode_ids (not yet solved)
 # TODO: implement
