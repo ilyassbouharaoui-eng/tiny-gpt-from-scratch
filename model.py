@@ -228,8 +228,14 @@ def softmax_overflow_demo(large_value):
         d['overflowed'] = False   
     return d
 
-# Step 32 - stable_softmax_1d (not yet solved)
-# TODO: implement
+# Step 32 - stable_softmax_1d
+import numpy as np
+
+def stable_softmax_1d(logits):
+    """Numerically stable softmax over a 1D logits vector."""
+    max = max_along_axis(logits,axis = 0)
+    x = logits - max
+    return array_exp(x)/sum_all(array_exp(x))
 
 # Step 33 - stable_softmax_2d_rowwise (not yet solved)
 # TODO: implement
