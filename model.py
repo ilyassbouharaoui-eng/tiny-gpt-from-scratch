@@ -317,8 +317,12 @@ def stack_y_batch(data, offsets, block_size):
         res.append(slice_y_at_offset(data,i,block_size))
     return np.array(res)
 
-# Step 44 - get_batch (not yet solved)
-# TODO: implement
+# Step 44 - get_batch
+def get_batch(data, block_size, batch_size, rng):
+    offset = sample_random_batch_offsets(len(data),block_size,batch_size,rng)
+    X = stack_x_batch(data,offset,block_size)
+    Y = stack_y_batch(data,offset,block_size)
+    return X,Y
 
 # Step 45 - allocate_count_matrix (not yet solved)
 # TODO: implement
