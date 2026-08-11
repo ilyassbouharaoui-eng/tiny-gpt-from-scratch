@@ -400,8 +400,9 @@ def log_prob_of_pair(p_matrix, current_id, next_id):
     """Return the log probability of a single (current, next) bigram."""
     return array_log(index_element(p_matrix,current_id,next_id))
 
-# Step 55 - sum_negative_log_probs (not yet solved)
-# TODO: implement
+# Step 55 - sum_negative_log_probs
+def sum_negative_log_probs(p_matrix, data):
+    return -sum(log_prob_of_pair(p_matrix,data[i],data[i+1]) for i in range(len(data)-1))
 
 # Step 56 - average_nll (not yet solved)
 # TODO: implement
