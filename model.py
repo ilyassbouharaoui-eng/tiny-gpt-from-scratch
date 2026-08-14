@@ -468,8 +468,10 @@ def cross_entropy_loss(probs, targets):
     """Mean negative log-likelihood over a batch."""
     return - sum(array_log(gather_correct_token_probs(probs,targets)))/len(targets)
 
-# Step 66 - derive_dlogits_on_paper (not yet solved)
-# TODO: implement
+# Step 66 - derive_dlogits_on_paper
+def derive_dlogits_on_paper():
+    """Return a string summarizing the derivation of dL/dlogits for mean cross-entropy."""
+    return ' Compute the mean cross-entropy gradient: softmax Jacobian multiplied by -1/pi,yi ==> dL/dlogits = (probs - onehot(targets)) / B'
 
 # Step 67 - compute_dlogits (not yet solved)
 # TODO: implement
