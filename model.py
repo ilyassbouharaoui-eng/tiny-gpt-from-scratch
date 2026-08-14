@@ -484,8 +484,15 @@ def derive_dw_on_paper():
     """Return a short written derivation of dL/dW for the lookup-as-matmul forward."""
     return 'Forward: logits = onehot(ids) @ W, equivalently logits[b] = W[ids[b]].\nShapes: ids (B,), onehot O (B, V), W (V, D), logits (B, D), dlogits (B, D).\nChain rule: dL/dW = O.T @ dlogits, shape (V, D).\nSince O has a single 1 per row at column ids[b], O.T @ dlogits sums rows of dlogits into rows of dW.\nRow v of dW equals the sum of dlogits[b] over all b with ids[b] == v.\nImplementation: scatter-add dlogits rows into dW at indices ids.'
 
-# Step 69 - compute_dw_scatter_add (not yet solved)
-# TODO: implement
+# Step 69 - compute_dw_scatter_add
+import numpy as np
+
+def compute_dw_scatter_add(ids, dlogits, vocab_size):
+    """Scatter-add dlogits rows into dW at positions given by ids."""
+    dw = np.zeros((vocab_size,len(dlogits[0])))
+    for i in range(len(ids)):
+        dw[ids[i]] += dlogits[i]
+    return dw
 
 # Step 70 - sgd_update_w (not yet solved)
 # TODO: implement
