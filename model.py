@@ -473,8 +473,11 @@ def derive_dlogits_on_paper():
     """Return a string summarizing the derivation of dL/dlogits for mean cross-entropy."""
     return ' Compute the mean cross-entropy gradient: softmax Jacobian multiplied by -1/pi,yi ==> dL/dlogits = (probs - onehot(targets)) / B'
 
-# Step 67 - compute_dlogits (not yet solved)
-# TODO: implement
+# Step 67 - compute_dlogits
+def compute_dlogits(probs, targets):
+    """Gradient of mean cross-entropy w.r.t. logits. probs: (B,V), targets: (B,)."""
+    one_hot = one_hot_encode_batch(targets,len(probs[0]))
+    return  (probs - one_hot)/len(targets)
 
 # Step 68 - derive_dw_on_paper (not yet solved)
 # TODO: implement
