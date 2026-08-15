@@ -533,13 +533,13 @@ def train_neural_bigram_loop(w, data, block_size, batch_size, learning_rate, num
 # Step 73 - sample_from_neural_bigram
 def sample_from_neural_bigram(w, start_id, num_tokens, itos):
     """Generate a string by repeatedly sampling from softmax of W[id]."""
+    rng = np.random.default_rng(0)
     id = start_id
     ids = [id]
     i = 0
     while i < num_tokens :
         logit = forward_logits_lookup(w,id)
         pr = stable_softmax_1d(logit)
-        rng = np.random.default_rng(0)
         j = int(rng.choice(range(len(pr)),p = pr))
         id = j
         ids.append(j)
