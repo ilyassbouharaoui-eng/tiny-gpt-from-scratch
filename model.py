@@ -563,8 +563,10 @@ def derive_linear_dw_on_paper():
     """Return a string with the derivation of dL/dW for Y = X @ W."""
     return 'Y = X @ W\ndL/dW = X.T @ dY\nshapes: X (B, D_in), W (In, D_out), dY (B, D_out) -> dL/dW (D_in, D_out)'
 
-# Step 77 - linear_backward_dx (not yet solved)
-# TODO: implement
+# Step 77 - linear_backward_dx
+def linear_backward_dx(dy, cache):
+    w = cache['w']
+    return matmul(dy,np.transpose(w))
 
 # Step 78 - linear_backward_dw (not yet solved)
 # TODO: implement
